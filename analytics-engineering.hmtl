@@ -1,0 +1,21 @@
+<h1>Analytics Engineering Projects</h1>
+ 
+<div class="card">
+<h2>🏠 Airbnb Analytics Pipeline (dbt)</h2>
+<p>
+End-to-end analytics engineering project using dbt.
+</p>
+1.London_bikeshare_eda.html
+View Project
+</a>
+</div>
+ 
+<div class="card">
+<h2>📈 Stockflow: Airflow & dbt Stock Data Pipeline</h2>
+<p>
+Automated stock market pipeline using Airflow and dbt.
+</p>
+<a href="stockflow.html">
+View Project
+</a>
+</div>
