@@ -1,235 +1,371 @@
 <!DOCTYPE html>
 <html lang="en">
+ 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Michéle Adriaans | Portfolio</title>
-
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background-color: #f5f5f5;
-      color: #333;
-    }
-
-    /* NAVBAR */
-    nav {
-      background-color: #1a1a1a;
-      padding: 15px 20px;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      margin: 0;
-      padding: 0;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1rem;
-    }
-
-    nav a:hover {
-      color: #00b3ff;
-    }
-
-    /* HEADER */
-    header {
-      background-color: #1a1a1a;
-      color: white;
-      padding: 50px 20px;
-      text-align: center;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 2.4rem;
-    }
-
-    header p {
-      margin-top: 10px;
-      font-size: 1.2rem;
-      opacity: 0.9;
-    }
-
-    /* BIO SECTION */
-    .bio {
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 20px;
-      text-align: center;
-      line-height: 1.6;
-    }
-
-    .bio h2 {
-      margin-bottom: 10px;
-    }
-
-    /* SKILLS SECTION */
-    .skills {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 20px;
-    }
-
-    .skills h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .skill-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-    }
-
-    .skill {
-      background: white;
-      padding: 12px 18px;
-      border-radius: 6px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      font-weight: bold;
-    }
-
-    /* PROJECT CARDS */
-    .projects {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      padding: 40px 20px;
-    }
-
-    .card {
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      width: 300px;
-      padding: 20px;
-      text-align: center;
-    }
-
-    .card h2 {
-      margin-top: 0;
-    }
-
-    .card a {
-      text-decoration: none;
-      color: #0077cc;
-      font-weight: bold;
-    }
-
-    /* FOOTER */
-    footer {
-      text-align: center;
-      padding: 25px;
-      font-size: 0.9rem;
-      color: #666;
-      margin-top: 40px;
-    }
-
-    footer a {
-      color: #0077cc;
-      text-decoration: none;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+<title>Michéle Adriaans | Data & AI Portfolio</title>
+ 
+<style>
+ 
+body{
+font-family: Arial, sans-serif;
+margin:0;
+background:#f5f5f5;
+color:#333;
+line-height:1.6;
+}
+ 
+/* NAVIGATION */
+ 
+nav{
+background:#111;
+position:sticky;
+top:0;
+z-index:1000;
+padding:15px 20px;
+}
+ 
+nav ul{
+list-style:none;
+display:flex;
+justify-content:center;
+gap:30px;
+margin:0;
+padding:0;
+}
+ 
+nav a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+}
+ 
+nav a:hover{
+color:#00b3ff;
+}
+ 
+/* HEADER */
+ 
+header{
+background:#111;
+color:white;
+text-align:center;
+padding:70px 20px;
+}
+ 
+header h1{
+margin:0;
+font-size:3rem;
+}
+ 
+header p{
+font-size:1.2rem;
+margin-top:10px;
+opacity:0.9;
+}
+ 
+/* ABOUT */
+ 
+.bio{
+max-width:900px;
+margin:auto;
+padding:60px 20px;
+text-align:center;
+}
+ 
+.profile-pic{
+width:180px;
+border-radius:8px;
+margin-bottom:20px;
+}
+ 
+.bio p{
+font-size:1.05rem;
+}
+ 
+/* JOURNEY */
+ 
+.journey{
+max-width:900px;
+margin:auto;
+text-align:center;
+padding:20px;
+}
+ 
+.timeline{
+background:white;
+border-radius:10px;
+padding:20px;
+box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+ 
+/* SKILLS */
+ 
+.skills{
+max-width:1000px;
+margin:auto;
+padding:60px 20px;
+}
+ 
+.skills h2{
+text-align:center;
+}
+ 
+.skill-category{
+background:white;
+margin:20px 0;
+padding:20px;
+border-radius:10px;
+box-shadow:0 2px 6px rgba(0,0,0,0.1);
+}
+ 
+/* PROJECT CATEGORIES */
+ 
+.section-title{
+text-align:center;
+margin-top:40px;
+}
+ 
+.projects{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:25px;
+padding:30px 20px 60px;
+}
+ 
+.card{
+background:white;
+width:320px;
+border-radius:10px;
+padding:25px;
+text-align:center;
+box-shadow:0 2px 8px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+ 
+.card:hover{
+transform:translateY(-5px);
+}
+ 
+.card h3{
+margin-top:0;
+}
+ 
+.card a{
+color:#0077cc;
+text-decoration:none;
+font-weight:bold;
+}
+ 
+/* FOOTER */
+ 
+footer{
+background:#111;
+color:white;
+text-align:center;
+padding:25px;
+}
+ 
+footer a{
+color:#33c3ff;
+text-decoration:none;
+}
+ 
+</style>
 </head>
-
+ 
 <body>
-
-  <!-- NAVBAR -->
-  <nav>
-    <ul>
-      <li><a href="#bio">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="https://github.com/mcadriaans" target="_blank">GitHub</a></li>
-    </ul>
-  </nav>
-
-  <!-- HEADER -->
-  <header>
-    <h1>Michéle Adriaans</h1>
-    <p>Data Analytics • Machine Learning • Analytics Engineering • AI Applications</p>
-  </header>
-
-  <!-- BIO SECTION -->
-  <section id="bio" class="bio">
-  <img src="assets/profile.png" alt="Michéle Adriaans portrait" class="profile-pic">
-
-    <h2>About Me</h2>
-    <p>
-    I am a former Electronic Engineer with a Master's degree in Computer Science and a strong interest in data and software systems. 
-    Over the past three years, I have pursued independent projects across SQL analytics, exploratory data analysis, machine learning, 
-    analytics engineering, and AI applications. My portfolio reflects a continuous learning journey, from data analysis and predictive 
-    modelling to modern data pipelines built with dbt and Airflow, as well as AI-powered applications.
-    </p>
-  </section>
-
-  <!-- SKILLS SECTION -->
-  <section id="skills" class="skills">
-    <h2>Skills</h2>
-    <div class="skill-grid">
-      <div class="skill">Python</div>
-      <div class="skill">SQL</div>
-      <div class="skill">Pandas</div>
-      <div class="skill">Streamlit</div>
-      <div class="skill">Tableau</div>
-      <div class="skill">Git & GitHub</div>
-      <div class="skill">Data Modeling</div>
-      <div class="skill">EDA</div>
-      <div class="skill">APIs</div>
-      <div class="skill">OCR</div>
-      <div class="skill">Generative AI</div>
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section id="projects" class="projects">
-
-    <div class="card">
-      <h2>📊 Data Analysis</h2>
-      <p>SQL, Python EDA and Tableau projects focused on data exploration,
-         reporting and business insights.</p>
-      <a href="data-analytics.html">View Projects</a>
-    </div>
-
-  <div class="card">
-    <h2>🤖 Machine Learning Case Studies</h2>
-    <p>Automated pipeline that ingests, transforms, and models stock‑market data using Airflow for orchestration and dbt for analytics‑ready transformations.</p>
-    <a href="machine-learning.html">View Case Studies</a>
-  </div>
-
-    <div class="card">
-      <h2>⚙️ Analytics Engineering</h2>
-      <p>Modern data pipelines built using dbt, Airflow and dimensional
-         modelling techniques.</p>
-      <a href="analytics-engineering.hmtl">View Projects</a>
-    </div>
-
-  <div class="card">
-    <h2>🌍 AI Applications</h2>
-    <p>Streamlit applications incorporating Generative AI, OCR,
-       APIs and text-to-speech technologies.</p>
-    <a href="ai-applications.html">View Projects</a>
-  </div>
-
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <p>© 2026 Michéle Adriaans • <a href="https://github.com/mcadriaans">GitHub</a> • <a href="https://www.linkedin.com/in/m-cyntia-a-709315205/" target="_blank">LinkedIn</a></p>
-  </footer>
-
+ 
+<!-- NAVBAR -->
+ 
+<nav>
+<ul>
+<li><a href="#about</li>
+<li>#journeyJourney</a></li>
+<li><a href="#skills">/li>
+<li><projectsProjects</a></li>
+<li><a href="https://github.com/mcadriaans" target="_blank">GitHub</a></li>
+</ul>
+</nav>
+ 
+<!-- HEADER -->
+ 
+<header>
+ 
+<h1>Michéle Adriaans</h1>
+ 
+<p>
+Former Electronic Engineer • MSc Computer Science • Data & AI Portfolio
+</p>
+ 
+</header>
+ 
+<!-- ABOUT -->
+ 
+<section id="about" class="bio">
+ 
+<img src="assets/profile.png"
+alt="Michéle Adriaans"
+class="profile-pic">
+ 
+<h2>About Me</h2>
+ 
+<p>
+ 
+I am a former Electronic Engineer with aa and software systems.
+ 
+Over the past three years I have built projects spanning SQL,
+data analysis, machine learning, analytics engineering and AI
+applications. My portfolio reflects a continuous learning journey
+from exploratory analysis and predictive modelling to modern data
+pipelines using dbt and Airflow, as well as AI-powered applications.
+ 
+</p>
+ 
+</section>
+ 
+<!-- JOURNEY -->
+ 
+<section id="journey" class="journey">
+ 
+<h2>Learning Journey</h2>
+ 
+<div class="timeline">
+ 
+<p>
+ 
+Electronic Engineering
+➡️ MSc Computer Science
+➡️ SQL & Data Analysis
+➡️ Python EDA
+➡️ Machine Learning Case Studies
+➡️ Analytics Engineering (dbt)
+➡️ Airflow Data Pipelines
+➡️ AI Applications
+ 
+</p>
+ 
+</div>
+ 
+</section>
+ 
+<!-- SKILLS -->
+ 
+<section id="skills" class="skills">
+ 
+<h2>Skills</h2>
+ 
+<div class="skill-category">
+<h3>Programming</h3>
+<p>Python • SQL • Git • GitHub</p>
+</div>
+ 
+<div class="skill-category">
+<h3>Data Analysis</h3>
+<p>Pandas • EDA • Tableau • Data Visualisation</p>
+</div>
+ 
+<div class="skill-category">
+<h3>Analytics Engineering</h3>
+<p>dbt • Airflow • Data Modelling • ETL Pipelines</p>
+</div>
+ 
+<div class="skill-category">
+<h3>AI Applications</h3>
+<p>Streamlit • APIs • OCR • Generative AI</p>
+</div>
+ 
+</section>
+ 
+<!-- PROJECT CATEGORIES -->
+ 
+<h2 id="projects" class="section-title">Project Portfolio</h2>
+ 
+<section class="projects">
+ 
+<div class="card">
+<h3>📊 Data Analysis</h3>
+ 
+<p>
+SQL, Python EDA and Tableau projects focused on finding insights,
+answering business questions and communicating results.
+</p>
+ 
+data-analysis.html
+View Projects
+</a>
+ 
+</div>
+ 
+<div class="card">
+<h3>🤖 Machine Learning Case Studies</h3>
+ 
+<p>
+Regression and classification case studies developed to deepen
+understanding of predictive modelling and model evaluation.
+</p>
+ 
+machine-learning.html
+View Case Studies
+</a>
+ 
+</div>
+ 
+<div class="card">
+<h3>⚙️ Analytics Engineering</h3>
+ 
+<p>
+Modern analytics engineering projects using dbt, Airflow,
+data modelling and automated workflows.
+</p>
+ 
+analytics-engineering.html
+View Projects
+</a>
+ 
+</div>
+ 
+<div class="card">
+<h3>🌍 AI Applications</h3>
+ 
+<p>
+Interactive AI-powered applications built using Streamlit,
+OCR, APIs and generative AI technologies.
+</p>
+ 
+ai-applications.html
+View Applications
+</a>
+ 
+</div>
+ 
+</section>
+ 
+<!-- FOOTER -->
+ 
+<footer>
+ 
+<p>
+ 
+© 2026 Michéle Adriaans |
+ 
+<a href="https://github.com/mcadriaans" target="_blank">
+GitHub
+</a>
+ 
+|
+ 
+<a href="https://www.linkedin.com/in/m-cyntia-a-709315205/"
+target="_blank">
+LinkedIn
+</a>
+ 
+</p>
+ 
+</footer>
+ 
 </body>
 </html>
