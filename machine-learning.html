@@ -1,24 +1,191 @@
-<h1>Machine Learning Case Studies</h1>
- 
-<div class="card">
-<h2>💎 Diamond Price Prediction Case Study</h2>
-<p>
-Comprehensive regression modelling case study including
-feature engineering, model comparison and performance
-evaluation.
-</p>
-diamond-case-study.html
-View Case Study
-</a>
-</div>
- 
-<div class="card">
-<h2>💳 Credit Card Fraud Detection Case Study</h2>
-<p>
-Classification case study focused on fraud detection,
-imbalanced datasets and model evaluation.
-</p>
-credit-card-fraud.html
-View Case Study
-</a>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Machine Learning Case Studies | Michéle Adriaans</title>
+
+<style>
+  /* 1. Global Styles & Font (Same as Data Analysis page) */
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background-color: #f8f9fa;
+    color: #333;
+    font-size: 18px; 
+    line-height: 1.6;
+  }
+
+  /* 2. Container to move content off edges */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px; 
+  }
+
+  /* 3. Navigation & Home Button */
+  nav {
+    padding: 20px 40px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+
+  .btn-home {
+    display: inline-block;
+    background-color: #333;
+    color: white;
+    text-decoration: none;
+    padding: 10px 25px;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+
+  .btn-home:hover {
+    background-color: #0077cc;
+  }
+
+  /* 4. GREEN Header */
+  header {
+    background-color: #1a894a; /* Professional Green Background */
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+  }
+
+  header h1 {
+    margin: 0 0 10px 0;
+    font-size: 2.8rem; 
+  }
+
+  header p {
+    font-size: 1.3rem;
+    margin: 0;
+    color: #e6f9ed;
+  }
+
+  /* 5. Project Cards */
+  .projects {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 60px 0; /* Added padding to space it from the header */
+  }
+
+  .card {
+    background: white;
+    width: 450px; /* Wide cards so titles fit on one line */
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column; 
+  }
+
+  .card h2 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    color: #222;
+  }
+
+  .card p {
+    flex-grow: 1; 
+    margin-bottom: 25px;
+  }
+
+  /* 6. View Case Study Buttons */
+  .btn-project {
+    display: block;
+    text-align: center;
+    background-color: #0077cc; /* Kept blue for consistency across portfolio */
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+
+  .btn-project:hover {
+    background-color: #004c99;
+    transform: translateY(-2px); 
+  }
+
+  /* 7. Footer Styles */
+  footer {
+    text-align: center;
+    padding: 30px;
+    margin-top: 60px;
+    background-color: #222;
+    color: white;
+  }
+
+  footer a {
+    color: #00b3ff;
+    text-decoration: none;
+  }
+  
+  footer a:hover {
+    text-decoration: underline;
+  }
+</style>
+</head>
+
+<body>
+
+  <!-- Navigation with Home Button -->
+  <nav>
+    <a href="index.html" class="btn-home">Home</a>
+  </nav>
+
+  <!-- Green Header -->
+  <header>
+    <h1>Machine Learning Case Studies</h1>
+    <p>Regression • Classification • Predictive Modelling</p>
+  </header>
+
+  <!-- Container keeps everything off the edges -->
+  <div class="container">
+
+    <section class="projects">
+
+      <!-- Card 1 -->
+      <div class="card">
+        <h2>💎 Diamond Price Prediction Case Study</h2>
+        <p>
+          Comprehensive regression modelling case study including
+          feature engineering, model comparison and performance
+          evaluation.
+        </p>
+        <!-- Fixed HTML Link and applied Button style -->
+        <a href="diamond-case-study.html" class="btn-project">
+          View Case Study
+        </a>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card">
+        <h2>💳 Credit Card Fraud Detection Case Study</h2>
+        <p>
+          Classification case study focused on fraud detection,
+          imbalanced datasets and model evaluation.
+        </p>
+        <!-- Fixed HTML Link and applied Button style -->
+        <a href="credit-card-fraud.html" class="btn-project">
+          View Case Study
+        </a>
+      </div>
+
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>
+      © 2026 Michéle Adriaans | <a href="index.html">Return to Portfolio</a>
+    </p>
+  </footer>
+
+</body>
+</html>
