@@ -118,5 +118,90 @@
   }
 
   .btn-project:hover {
-    background-color: #4527a0; /* Even darker purple on hover *
+    background-color: #4527a0; /* Even darker purple on hover */
+    transform: translateY(-2px); 
+  }
 
+  /* 8. Footer Styles */
+  footer {
+    text-align: center;
+    padding: 30px;
+    margin-top: 40px;
+    background-color: #222;
+    color: white;
+  }
+
+  footer a {
+    color: #673ab7; /* Purple footer link */
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  footer a:hover {
+    text-decoration: underline;
+  }
+</style>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="index.html" class="btn-home">Home</a>
+  </nav>
+
+  <!-- Purple Header -->
+  <header>
+    <h1>⚙️ Analytics Engineering Projects</h1>
+    <p>dbt • Airflow • Dimensional Modelling • Data Pipelines</p>
+  </header>
+
+  <!-- Container keeps everything off the edges -->
+  <div class="container">
+    
+    <section class="intro">
+      <p>
+        These projects focus on building robust, scalable data pipelines, 
+        transforming raw data into analytics-ready models using modern data stack tools.
+      </p>
+    </section>
+
+    <section class="projects">
+
+      <!-- Card 1 -->
+      <div class="card">
+        <h2>🏠 Airbnb Analytics Pipeline (dbt)</h2>
+        <p>
+          End-to-end analytics engineering project using dbt.
+        </p>
+        <!-- Fixed HTML Link and applied Button style -->
+        <a href="1.London_bikeshare_eda.html" target="_blank" class="btn-project">
+          View Project
+        </a>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card">
+        <h2>📈 Stockflow: Airflow & dbt Stock Data Pipeline</h2>
+        <p>
+          Automated stock market pipeline using Airflow and dbt.
+        </p>
+        <!-- Formatted as Button -->
+        <a href="stockflow.html" target="_blank" class="btn-project">
+          View Project
+        </a>
+      </div>
+
+    </section>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>
+      © 2026 Michéle Adriaans | <a href="index.html">Return to Portfolio</a>
+    </p>
+  </footer>
+
+</body>
+</html>
