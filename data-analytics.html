@@ -12,7 +12,7 @@
     margin: 0;
     background-color: #f8f9fa;
     color: #333;
-    font-size: 18px; /* Increased base font size */
+    font-size: 18px; 
     line-height: 1.6;
   }
 
@@ -20,7 +20,7 @@
   .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 40px; /* Adds space on the left and right sides */
+    padding: 0 40px; 
   }
 
   /* 3. Navigation & Home Button */
@@ -47,7 +47,7 @@
 
   /* 4. Blue Header without the Icon */
   header {
-    background-color: #005bb5; /* Nice blue background */
+    background-color: #005bb5; 
     color: white;
     text-align: center;
     padding: 60px 20px;
@@ -55,7 +55,7 @@
 
   header h1 {
     margin: 0 0 10px 0;
-    font-size: 2.8rem; /* Much bigger header font */
+    font-size: 2.8rem; 
   }
 
   header p {
@@ -68,7 +68,7 @@
     max-width: 900px;
     margin: 50px auto;
     text-align: center;
-    font-size: 1.25rem; /* Bigger intro font */
+    font-size: 1.25rem; 
     color: #444;
   }
 
@@ -83,12 +83,12 @@
 
   .card {
     background: white;
-    width: 340px;
+    width: 450px; /* <--- INCREASED FROM 340px TO FIT TITLE ON ONE LINE */
     padding: 30px;
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.08);
     display: flex;
-    flex-direction: column; /* Helps push the button to the bottom */
+    flex-direction: column; 
   }
 
   .card h2 {
@@ -98,7 +98,7 @@
   }
 
   .card p {
-    flex-grow: 1; /* Makes sure buttons align at the bottom if text length varies */
+    flex-grow: 1; 
     margin-bottom: 25px;
   }
 
@@ -117,7 +117,7 @@
 
   .btn-project:hover {
     background-color: #004c99;
-    transform: translateY(-2px); /* Slight lift effect on hover */
+    transform: translateY(-2px); 
   }
 
   /* 7. Footer Styles */
@@ -172,7 +172,6 @@
           End-to-end exploratory data analysis using Python, SQL and
           Tableau to investigate bike-sharing usage patterns in London.
         </p>
-        <!-- Button Link -->
         <a href="https://mcadriaans.github.io/eda_london-bike-share-analysis/index.html" target="_blank" class="btn-project">
           View Project
         </a>
@@ -185,7 +184,6 @@
           Collection of SQL projects covering querying, joins,
           aggregations, data cleaning and analytical reporting.
         </p>
-        <!-- Button Link (Fixed HTML syntax) -->
         <a href="#" target="_blank" class="btn-project">
           View Projects
         </a>
@@ -198,7 +196,6 @@
           Python exploratory data analysis projects focused on
           uncovering trends, patterns and actionable insights.
         </p>
-        <!-- Button Link (Fixed HTML syntax) -->
         <a href="#" target="_blank" class="btn-project">
           View Projects
         </a>
@@ -207,12 +204,6 @@
     </section>
   </div>
 
-  <!-- Footer (Fixed HTML syntax) -->
   <footer>
     <p>
       © 2026 Michéle Adriaans | <a href="index.html">Return to Portfolio</a>
-    </p>
-  </footer>
-
-</body>
-</html>
