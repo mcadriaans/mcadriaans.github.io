@@ -84,3 +84,221 @@
       width: 180px;
       height: 180px;
       border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+      border: 4px solid #1a1a1a;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .bio h2 {
+      margin-bottom: 15px;
+      font-size: 2rem;
+      color: #1a1a1a;
+    }
+
+    .bio p {
+      font-size: 1.15rem;
+      color: #444;
+    }
+
+    /* 6. SKILLS SECTION */
+    .skills {
+      max-width: 900px;
+      margin: 40px auto;
+      text-align: center;
+    }
+
+    .skills h2 {
+      margin-bottom: 25px;
+      font-size: 2rem;
+      color: #1a1a1a;
+    }
+
+    .skill-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .skill {
+      background: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      font-weight: bold;
+      color: #1a1a1a;
+      border: 1px solid #eaeaea;
+    }
+
+    /* 7. PROJECT CARDS */
+    .projects {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      padding: 40px 0 60px 0;
+    }
+
+    .card {
+      background: white;
+      width: 450px; /* Same wide cards as sub-pages */
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      display: flex;
+      flex-direction: column;
+      text-align: left; /* Changed to left align for easier reading, optional! */
+    }
+
+    .card h2 {
+      margin-top: 0;
+      font-size: 1.5rem;
+      color: #222;
+      text-align: center;
+    }
+
+    .card p {
+      flex-grow: 1; /* Pushes button to bottom */
+      margin-bottom: 25px;
+      color: #444;
+      text-align: center;
+    }
+
+    /* 8. BUTTONS (Matches Header Color) */
+    .btn-project {
+      display: block;
+      text-align: center;
+      background-color: #1a1a1a; /* Matches the dark header */
+      color: white;
+      text-decoration: none;
+      padding: 12px 20px;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .btn-project:hover {
+      background-color: #333333; /* Slightly lighter gray on hover */
+      transform: translateY(-2px);
+    }
+
+    /* 9. FOOTER */
+    footer {
+      text-align: center;
+      padding: 30px;
+      background-color: #1a1a1a;
+      color: white;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: #00b3ff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <ul>
+      <li><a href="#bio">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="https://github.com/mcadriaans" target="_blank">GitHub</a></li>
+    </ul>
+  </nav>
+
+  <!-- HEADER -->
+  <header>
+    <h1>Michéle Adriaans</h1>
+    <p>Data Analytics • Machine Learning • Analytics Engineering • AI Applications</p>
+  </header>
+
+  <!-- WRAP CONTENT IN CONTAINER -->
+  <div class="container">
+
+    <!-- BIO SECTION -->
+    <section id="bio" class="bio">
+      <!-- Added styling to make profile pic look like a neat circle -->
+      <img src="assets/profile.png" alt="Michéle Adriaans portrait" class="profile-pic">
+      
+      <h2>About Me</h2>
+      <p>
+        I am a former Electronic Engineer with a Master's degree in Computer Science and a strong interest in data and software systems. 
+        Over the past three years, I have pursued independent projects across SQL analytics, exploratory data analysis, machine learning, 
+        analytics engineering, and AI applications. My portfolio reflects a continuous learning journey, from data analysis and predictive 
+        modelling to modern data pipelines built with dbt and Airflow, as well as AI-powered applications.
+      </p>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills" class="skills">
+      <h2>Skills</h2>
+      <div class="skill-grid">
+        <div class="skill">Python</div>
+        <div class="skill">SQL</div>
+        <div class="skill">Pandas</div>
+        <div class="skill">Streamlit</div>
+        <div class="skill">Tableau</div>
+        <div class="skill">Git & GitHub</div>
+        <div class="skill">Data Modeling</div>
+        <div class="skill">EDA</div>
+        <div class="skill">APIs</div>
+        <div class="skill">OCR</div>
+        <div class="skill">Generative AI</div>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="projects">
+
+      <!-- Card 1 -->
+      <div class="card">
+        <h2>📊 Data Analysis</h2>
+        <p>SQL, Python EDA and Tableau projects focused on data exploration, reporting and business insights.</p>
+        <a href="data-analytics.html" class="btn-project">View Projects</a>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card">
+        <h2>🤖 Machine Learning Case Studies</h2>
+        <p>Automated pipeline that ingests, transforms, and models stock‑market data using Airflow for orchestration and dbt for analytics‑ready transformations.</p>
+        <a href="machine-learning.html" class="btn-project">View Case Studies</a>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card">
+        <h2>⚙️ Analytics Engineering</h2>
+        <p>Modern data pipelines built using dbt, Airflow and dimensional modelling techniques.</p>
+        <a href="analytics-engineering.html" class="btn-project">View Projects</a>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="card">
+        <h2>🌍 AI Applications</h2>
+        <p>Streamlit applications incorporating Generative AI, OCR, APIs and text-to-speech technologies.</p>
+        <a href="ai-applications.html" class="btn-project">View Projects</a>
+      </div>
+
+    </section>
+
+  </div> <!-- End of Container -->
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Michéle Adriaans • 
+       <a href="https://github.com/mcadriaans" target="_blank">GitHub</a> • 
+       <a href="https://www.linkedin.com/in/m-cyntia-a-709315205/" target="_blank">LinkedIn</a>
+    </p>
+  </footer>
+
+</body>
+</html>
