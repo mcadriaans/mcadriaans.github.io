@@ -139,7 +139,7 @@
 
   <div class="container">
     <!-- Make sure to save your image as 'diamond_banner.jpg' inside your 'images' folder -->
-    <img src="images/diamond_banner.jpg" alt="Diamond Price Prediction Model" class="header-image">
+    <img src="assets/ml_diamond_index.png" alt="Diamond Price Prediction Model" class="header-image">
 
     <section id="intro">
       <p>
@@ -159,16 +159,18 @@
     <section id="about">
       <h2>ℹ️ About the Case Study</h2>
       <p>
-        This analysis explores the relationship between a diamond's characteristics (such as carat weight, cut quality, color, and clarity) and its overall price. 
+        This project uses machine learning regression to predict diamond prices from key characteristics such as carat, cut, color, clarity, depth, table, length, width, and height. 
+        The analysis explores how these features relate to price, examines their distributions and relationships, and applies data preprocessing and feature engineering before model development. 
+        Several regression approaches are evaluated, including XGBoost, with Optuna used to tune the XGBoost model. The project combines exploratory analysis, statistical testing, multivariate analysis, and predictive modelling to understand the factors associated with diamond pricing and build an accurate price prediction model. 
       </p>
       <p>
         The project covers the end-to-end machine learning lifecycle:
       </p>
       <ul>
-        <li><strong>Data Cleaning & EDA:</strong> Handling missing values, outliers, and uncovering correlations.</li>
-        <li><strong>Feature Engineering:</strong> Encoding categorical variables and scaling numerical data.</li>
-        <li><strong>Model Training:</strong> Evaluating various regression algorithms to find the most accurate predictor.</li>
-        <li><strong>Performance Evaluation:</strong> Using metrics like RMSE and R² to measure model success.</li>
+        <li><strong>Data Cleaning & EDA:</strong>Cleaning invalid measurements, analysing distributions and outliers, and exploring relationships between features and price.</li>
+        <li><strong>Feature Engineering & Preprocessing:</strong> Transforming numerical features, encoding categorical variables, and preparing the data for modelling.</li>
+        <li><strong>Model Training & Tuning:</strong> Training and comparing regression models, with Optuna used to optimise the XGBoost model..</li>
+        <li><strong>Performance Evaluation:</strong> Evaluating model performance using metrics such as RMSE, MAE, and R² on held-out data..</li>
       </ul>
       <p>
         All raw data, files, and source code are available in the GitHub repository via the links above.
