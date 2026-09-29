@@ -2,187 +2,184 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <title>Diamond Price Prediction | Case Study</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Machine Learning Case Studies | Michéle Adriaans</title>
 
-<style>
-  /* 1. Global Styles & Font */
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    background-color: #f8f9fa;
-    color: #333;
-    font-size: 18px; 
-    line-height: 1.6;
-  }
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI&display=swap" rel="stylesheet">
 
-  /* 2. Container to move content off edges */
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 40px; 
-  }
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f2f2f2;
+      color: #333;
+    }
 
-  /* 3. Navigation & Home Button */
-  nav {
-    padding: 20px 40px;
-    background-color: #ffffff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  }
+    header {
+      background-color: #1a894a; /* Professional Green */
+      color: white;
+      padding: 20px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-  .btn-home {
-    display: inline-block;
-    background-color: #333;
-    color: white;
-    text-decoration: none;
-    padding: 10px 25px;
-    border-radius: 6px;
-    font-weight: bold;
-    transition: background-color 0.3s;
-  }
+    header h1 {
+      margin: 0;
+      font-size: 1.8em;
+    }
 
-  .btn-home:hover {
-    background-color: #1a894a; /* Made the home button hover green too for consistency */
-  }
+    nav a {
+      color: white;
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: 500;
+    }
 
-  /* 4. GREEN Header */
-  header {
-    background-color: #1a894a; /* Professional Green Background */
-    color: white;
-    text-align: center;
-    padding: 60px 20px;
-  }
+    nav a:hover {
+      text-decoration: underline;
+    }
 
-  header h1 {
-    margin: 0 0 10px 0;
-    font-size: 2.8rem; 
-  }
+    .container {
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 20px 30px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
 
-  header p {
-    font-size: 1.3rem;
-    margin: 0;
-    color: #e6f9ed;
-  }
+    .header-image {
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+      margin-bottom: 30px;
+      max-height: 400px;
+      object-fit: cover;
+    }
 
-  /* 5. Project Cards */
-  .projects {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    padding: 60px 0; 
-  }
+    section {
+      margin-bottom: 40px;
+    }
 
-  .card {
-    background: white;
-    width: 450px; 
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    display: flex;
-    flex-direction: column; 
-  }
+    h2 {
+      color: #1a894a; /* Matched section headers to the green theme */
+      margin-bottom: 15px;
+    }
 
-  .card h2 {
-    margin-top: 0;
-    font-size: 1.5rem;
-    color: #222;
-  }
+    .card-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      list-style: none;
+      padding: 0;
+    }
 
-  .card p {
-    flex-grow: 1; 
-    margin-bottom: 25px;
-  }
+    .card-list li {
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 15px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      text-align: center;
+    }
 
-  /* 6. View Case Study Buttons (Now GREEN) */
-  .btn-project {
-    display: block;
-    text-align: center;
-    background-color: #1a894a; /* Matches header green */
-    color: white;
-    text-decoration: none;
-    padding: 12px 20px;
-    border-radius: 6px;
-    font-weight: bold;
-    transition: background-color 0.3s, transform 0.2s;
-  }
+    .card-list li:hover {
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
 
-  .btn-project:hover {
-    background-color: #126134; /* Darker green on hover */
-    transform: translateY(-2px); 
-  }
+    .card-list a {
+      color: #1a894a; /* Matched link text to green theme */
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 1.1em;
+    }
 
-  /* 7. Footer Styles */
-  footer {
-    text-align: center;
-    padding: 30px;
-    margin-top: 60px;
-    background-color: #222;
-    color: white;
-  }
+    .card-list a:hover {
+      text-decoration: underline;
+    }
 
-  footer a {
-    color: #1a894a; /* Changed footer link to green too */
-    text-decoration: none;
-  }
-  
-  footer a:hover {
-    text-decoration: underline;
-  }
-</style>
+    .back-button {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 16px;
+      background-color: #000;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: background-color 0.2s ease;
+    }
+
+    .back-button:hover {
+      background-color: #333;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      color: #666;
+    }
+  </style>
 </head>
 
 <body>
 
-  <!-- Navigation with Home Button -->
-  <nav>
-    <a href="index.html" class="btn-home">Home</a>
-  </nav>
-
-  <!-- Green Header -->
   <header>
-    <h1>Machine Learning Case Studies</h1>
-    <p>Regression • Classification • Predictive Modelling</p>
+    <h1>💎 Diamond Price Prediction</h1>
+    <nav>
+      <a href="#files">Files</a>
+      <a href="#about">About</a>
+      <a href="index.html">Portfolio</a>
+    </nav>
   </header>
 
-  <!-- Container keeps everything off the edges -->
   <div class="container">
+    <!-- Updated image path here -->
+    <img src="assets/ml_diamond_index.png" alt="Diamond Price Prediction Model" class="header-image">
 
-    <section class="projects">
-
-      <!-- Card 1 -->
-      <div class="card">
-        <h2>💎 Diamond Price Prediction Case Study</h2>
-        <p>
-          Comprehensive regression modelling case study including
-          feature engineering, model comparison and performance
-          evaluation.
-        </p>
-        <a href="ml_diamond_prediction.html" class="btn-project">
-          View Case Study
-        </a>
-      </div>
-
-      <!-- Card 2 -->
-      <div class="card">
-        <h2>💳 Credit Card Fraud Detection Case Study</h2>
-        <p>
-          Classification case study focused on fraud detection,
-          imbalanced datasets and model evaluation.
-        </p>
-        <a href="credit-card-fraud.html" class="btn-project">
-          View Case Study
-        </a>
-      </div>
-
+    <section id="intro">
+      <p>
+        Welcome to my Diamond Price Prediction case study. 
+        This project focuses on building a machine learning regression model to estimate the market value of diamonds based on their physical attributes.
+      </p>
     </section>
+
+    <section id="files">
+      <h2>📁 Project Files</h2>
+      <ul class="card-list">
+        <li><a href="README.html">📄 Project README</a></li>
+        <li><a href="diamond_notebook.html">📓 Jupyter Notebook</a></li>
+      </ul>
+    </section>
+
+    <section id="about">
+      <h2>ℹ️ About the Case Study</h2>
+      <p>
+        This analysis explores the relationship between a diamond's characteristics (such as carat weight, cut quality, color, and clarity) and its overall price. 
+      </p>
+      <p>
+        The project covers the end-to-end machine learning lifecycle:
+      </p>
+      <ul>
+        <li><strong>Data Cleaning & EDA:</strong> Handling missing values, outliers, and uncovering correlations.</li>
+        <li><strong>Feature Engineering:</strong> Encoding categorical variables and scaling numerical data.</li>
+        <li><strong>Model Training:</strong> Evaluating various regression algorithms to find the most accurate predictor.</li>
+        <li><strong>Performance Evaluation:</strong> Using metrics like RMSE and R² to measure model success.</li>
+      </ul>
+      <p>
+        All raw data, files, and source code are available in the GitHub repository via the links above.
+      </p>
+    </section>
+
+    <!-- Links smoothly back to the Machine Learning section -->
+    <a href="machine-learning.html" class="back-button">← Back to Machine Learning</a>
   </div>
 
-  <!-- Footer -->
   <footer>
-    <p>
-      © 2026 Michéle Adriaans | <a href="index.html">Return to Portfolio</a>
-    </p>
+    &copy; 2026 Michéle Adriaans · Built with HTML & GitHub Pages
   </footer>
 
 </body>
