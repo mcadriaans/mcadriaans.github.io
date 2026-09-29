@@ -41,4 +41,154 @@
       text-decoration: underline;
     }
 
-    .con
+    .container {
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 20px 30px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
+
+    .header-image {
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+      margin-bottom: 30px;
+      max-height: 400px;
+      object-fit: cover;
+    }
+
+    section {
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      color: #FF5A5F; /* Airbnb Red */
+      margin-bottom: 15px;
+    }
+
+    .card-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      list-style: none;
+      padding: 0;
+    }
+
+    .card-list li {
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 15px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .card-list li:hover {
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      transform: translateY(-2px);
+    }
+
+    .card-list a {
+      color: #FF5A5F; /* Airbnb Red */
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 1.1em;
+    }
+
+    .card-list a:hover {
+      text-decoration: underline;
+      color: #E31C5F; /* Slightly darker red on hover */
+    }
+
+    .back-button {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 16px;
+      background-color: #484848; /* Dark Gray */
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: background-color 0.2s ease;
+    }
+
+    .back-button:hover {
+      background-color: #222;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      color: #666;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>🏠 Airbnb Analytics Pipeline</h1>
+    <nav>
+      <a href="#contents">Files</a>
+      <a href="#about">About</a>
+      <a href="index.html">Portfolio</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <!-- Make sure to save your image as 'airbnb_banner.png' inside your 'assets' folder -->
+    <img src="assets/airbnb_banner.png" alt="Airbnb Analytics Pipeline" class="header-image">
+
+    <section id="intro">
+      <p>
+        Welcome to my Airbnb Analytics Engineering project. 
+        This pipeline transforms raw Airbnb booking and hosting data into an analytics-ready dimensional model using Snowflake and dbt.
+      </p>
+    </section>
+
+    <section id="contents">
+      <h2>📁 Project Resources</h2>
+      <ul class="card-list">
+        <li><a href="README.html">📄 Project README</a></li>
+        <li><a href="YOUR_DASHBOARD_LINK_HERE" target="_blank">📊 Interactive Dashboard</a></li>
+        <li><a href="YOUR_DBT_DOCS_LINK_HERE" target="_blank">📚 dbt Documentation Site</a></li>
+        <li><a href="YOUR_GITHUB_REPO_LINK_HERE" target="_blank">💻 View Code on GitHub</a></li>
+      </ul>
+    </section>
+
+    <section id="about">
+      <h2>ℹ️ About This Project</h2>
+      <p>
+        This project demonstrates modern analytics engineering best practices by building a scalable, tested, and documented data warehouse pipeline.
+      </p>
+      <p>
+        <strong>Key Technical Highlights:</strong>
+      </p>
+      <ul>
+        <li><strong>Data Warehousing:</strong> Configured Snowflake as the central cloud data platform.</li>
+        <li><strong>Data Transformation (dbt):</strong> Architected a multi-layer pipeline (Bronze/Staging, Silver/Cleansed, Gold/Marts).</li>
+        <li><strong>Slowly Changing Dimensions (SCDs):</strong> Implemented dbt snapshots to track historical state changes in bookings.</li>
+        <li><strong>Incremental Loading:</strong> Built incremental models (e.g., <code>silver_hosts</code>, <code>silver_listings</code>) to efficiently process new data using <code>delete+insert</code> strategies.</li>
+        <li><strong>Data Quality & Testing:</strong> Enforced data integrity using primary key constraints, `not_null` checks, and custom dbt expectations (e.g., ensuring no overlapping active SCD records).</li>
+      </ul>
+      <p>
+        The final Gold layer exposes star-schema fact and dimension tables, powering the interactive dashboard to analyze host performance, cancellation rates, and booking trends.
+      </p>
+    </section>
+
+    <!-- Links smoothly back to the Analytics Engineering section -->
+    <a href="analytics-engineering.html" class="back-button">← Back to Analytics Engineering</a>
+  </div>
+
+  <footer>
+    &copy; 2026 Michéle Adriaans · Built with HTML & GitHub Pages
+  </footer>
+
+</body>
+</html>
