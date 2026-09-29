@@ -2,194 +2,170 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>London Bike Share Analysis (2015–2017)</title>
+  <title>London Bike Share Analysis</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Segoe+UI&display=swap" rel="stylesheet">
 
   <style>
     body {
-      background-color: #f2f2f2;
-      font-family: 'Segoe UI', sans-serif;
-      color: #333;
       margin: 0;
-      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f2f2f2;
+      color: #333;
+    }
+
+    header {
+      background-color: #2c3e50;
+      color: white;
+      padding: 20px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.8em;
+    }
+
+    nav a {
+      color: white;
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
     }
 
     .container {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 30px;
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 20px 30px;
       background-color: #fff;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
       border-radius: 8px;
     }
 
-    h1, h2, h3 {
-      color: #2c3e50;
-      margin-top: 30px;
+    .header-image {
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+      margin-bottom: 30px;
     }
 
-    h1 {
-      font-size: 2.2rem;
-      margin-bottom: 10px;
+    section {
+      margin-bottom: 40px;
     }
 
     h2 {
-      font-size: 1.6rem;
-      margin-bottom: 8px;
+      color: #2c3e50;
+      margin-bottom: 15px;
     }
 
-    p, li {
-      line-height: 1.6;
+    .card-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      list-style: none;
+      padding: 0;
     }
 
-    ul {
-      padding-left: 20px;
+    .card-list li {
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 15px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      text-align: center;
     }
 
-    a {
+    .card-list li:hover {
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+
+    .card-list a {
       color: #007acc;
+      font-weight: 600;
       text-decoration: none;
     }
 
-    a:hover {
+    .card-list a:hover {
       text-decoration: underline;
     }
-
-    img {
-      max-width: 100%;
+    .back-button {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 16px;
+      background-color: #000;
+      color: #fff;
+      text-decoration: none;
       border-radius: 6px;
-      margin: 20px 0;
+      font-weight: 600;
+      transition: background-color 0.2s ease;
     }
 
-    pre {
-      background: #f7f7f7;
-      padding: 12px;
-      border-radius: 6px;
-      overflow-x: auto;
-      font-size: 0.95rem;
+    .back-button:hover {
+      background-color: #333;
     }
-    .back-button { 
-      display: inline-block; 
-      padding: 10px 16px; 
-      background-color: #007acc; 
-      color: white; 
-      border-radius: 5px; 
-      text-decoration: none; 
-      margin: 20px 0; 
-      font-family: "Segoe UI", sans-serif;
-      font-size: 15px; font-weight: bold; 
-    } 
-    .back-button:hover { 
-      background-color: #005fa3; 
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      color: #666;
     }
   </style>
 </head>
 
 <body>
+
+  <header>
+    <h1>🚲 London Bike Share Analysis</h1>
+    <nav>
+      <a href="#contents">Contents</a>
+      <a href="#about">About</a>
+      <a href="https://mcadriaans.github.io/">Portfolio</a>
+    </nav>
+  </header>
+
   <div class="container">
-  <a href="index.html" class="back-button">← Back to Home</a>
-    <h1>🚲 London Bike Share Analysis (2015–2017)</h1>
-    <p style="color: #1035AC;">
-      Welcome to the London Bike Share Analysis Project.
-      This work showcases structured analytical thinking, clear documentation, and the ability to translate raw data into meaningful insights. 
-      Through the combined use of Python, SQL, and an interactive dashboard, it demonstrates how multiple analytical tools can work together to support confident, data‑driven decision‑making.
-    </p>
+    <img src="images/london_bikeshare.jpg" alt="London Bikeshare" class="header-image">
 
-    <h2>❓ What is Bike Sharing?</h2>
-    <p>
-      Bike sharing is a transportation service where bicycles are available for short‑term use.  
-      It provides a convenient, eco‑friendly way to navigate urban areas and complements public transit systems.
-    </p>
+    <section id="intro">
+      <p>
+        Welcome to my analysis of London’s bike sharing system.  
+        This site brings together my Exploratory Data Analysis, SQL insights, and interactive dashboard.
+      </p>
+    </section>
 
-    <h2>📊 Project Overview</h2>
-    <p>
-      This project explores London bike‑sharing data from 2015 to 2017, including:
-    </p>
-    <ul>
-      <li>Data cleaning and preparation</li>
-      <li>Exploratory data analysis (EDA)</li>
-      <li>SQL business questions</li>
-      <li>Interactive Tableau dashboard</li>
-      <li>Weather and seasonal trend analysis</li>
-    </ul>
+    <section id="contents">
+      <h2>📁 Project Contents</h2>
+      <ul class="card-list">
+        <li><a href="README.html">📄 Project README </a></li>
+        <li><a href="1.London_bike_sharing_EDA.html">🐍 Python EDA</a></li>
+        <li><a href="2.SQL_EDA.html">🧮 SQL EDA </a></li>
+        <li><a href="https://public.tableau.com/app/profile/michele.adriaans/viz/24072026_LondonBikeShareAnalysis2015-2017/Dashboard1?publish=yes">📊 Interactive Dashboard</a></li>
+      </ul>
+    </section>
 
-    <h2>📁 Repository Contents</h2>
-    <ul>
-      <li><strong>EDA Notebook:</strong> Data exploration and visualization</li>
-      <li><strong>Tableau Dashboard:</strong> Interactive insights + guide</li>
-      <li><strong>SQL Analysis:</strong> Business questions and answers</li>
-      <li><strong>Dataset:</strong> Weather, season, and rental activity</li>
-    </ul>
+    <section id="about">
+      <h2>ℹ️ About This Project</h2>
+      <p>
+        This analysis explores bike‑sharing trends in London from 2015–2017, including weather impacts, seasonal patterns, and commuter behavior.
+        All files and source code are available in the GitHub repository.
+      </p>
+    </section>
 
-    <h2>📦 Dataset Description</h2>
-    <p>
-      The dataset includes:
-    </p>
-    <ul>
-      <li>Bike rental counts</li>
-      <li>Temperature, humidity, wind speed</li>
-      <li>Weather conditions</li>
-      <li>Holiday and weekend indicators</li>
-      <li>Meteorological seasons</li>
-    </ul>
-
-    <h2>🌍 Data Sources</h2>
-    <ul>
-      <li>Transport for London (TfL) Open Data</li>
-      <li>Freemeteo weather data</li>
-      <li>UK Government Bank Holidays</li>
-    </ul>
-
-    <h2>📑 Column Details</h2>
-    <pre>
-timestamp      – Date and time  
-cnt            – Count of new bike shares  
-t1             – Actual temperature (°C)  
-t2             – Feels-like temperature (°C)  
-hum            – Humidity (%)  
-wind_speed     – Wind speed (km/h)  
-weather_code   – Weather category  
-is_holiday     – 1 = holiday, 0 = not  
-is_weekend     – 1 = weekend, 0 = weekday  
-season         – 0 spring, 1 summer, 2 fall, 3 winter  
-    </pre>
-
-    <h2>🛠️ Technologies Used</h2>
-    <ul>
-      <li>Python (Pandas, NumPy, Matplotlib, Seaborn)</li>
-      <li>SQL (PostgreSQL)</li>
-      <li>Tableau</li>
-      <li>Markdown</li>
-    </ul>
-
-    <h2>📂 Project Structure</h2>
-    <pre>
-📁 data/
-    └── bike_sharing.csv
-1.London_bike_sharing_EDA.ipynb
-2.SQL_Exploratory_Analysis.md
-3.London_bike_sharing_Dashboard.md
-4.London_bike_sharing_Dashboard_Guide.pdf
-README.md
-    </pre>
-
-    <h2>🔍 Key Findings</h2>
-    <p>
-      The analysis revealed several important insights:
-    </p>
-    <ul>
-      <li>Nearly <strong> 20 million rentals</strong> occurred between 2015–2017.</li>
-      <li><strong>Weekday commuting</strong> drives demand, especially at 8 AM and 5 PM.</li>
-      <li>Weekday rentals are <strong>~26% higher</strong> than weekend rentals.</li>
-      <li><strong>Summer</strong> is the peak season; winter sees the lowest usage.</li>
-      <li>Temperature has a <strong>strong positive correlation</strong> with rental volume.</li>
-      <li>Clear and partly cloudy weather encourage usage; rain and snow reduce it.</li>
-      <li>Humidity between <strong>61–80%</strong> is optimal for ridership.</li>
-      <li>Only the <strong>top 10% of hours</strong> qualify as “High Traffic,” highlighting predictable peak windows.</li>
-    </ul>
-
+    <a href="https://mcadriaans.github.io/" class="back-button">← Back to Portfolio</a>
   </div>
+
+  <footer>
+    &copy; 2026 Michéle Adriaans · Built with HTML & GitHub Pages
+  </footer>
+
 </body>
 </html>
