@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SQL Portfolio Projects | Michéle Adriaans</title>
+
+<style>
+  /* 1. Global Styles & Bigger Font */
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background-color: #f8f9fa;
+    color: #333;
+    font-size: 18px; 
+    line-height: 1.6;
+  }
+
+  /* 2. Container */
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 40px; 
+  }
+
+  /* 3. Navigation & Home Button */
+  nav {
+    padding: 20px 40px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+
+  .btn-home {
+    display: inline-block;
+    background-color: #333;
+    color: white;
+    text-decoration: none;
+    padding: 10px 25px;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+
+  .btn-home:hover {
+    background-color: #0077cc;
+  }
+
+  /* 4. Lighter Baby Blue Header */
+  header {
+    background: linear-gradient(135deg, #4da6ff, #1a8cff); /* Smooth light baby blue gradient */
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+  }
+
+  header h1 {
+    margin: 0 0 10px 0;
+    font-size: 2.8rem; 
+  }
+
+  header p {
+    font-size: 1.3rem;
+    margin: 0;
+    color: #f0f7ff;
+  }
+
+  .intro {
+    max-width: 800px;
+    margin: 40px auto;
+    text-align: center;
+    font-size: 1.25rem; 
+    color: #444;
+  }
+
+  /* 5. Project Cards in ONE Column */
+  .projects {
+    display: flex;
+    flex-direction: column; /* Stack cards vertically */
+    align-items: center;    /* Center the cards */
+    gap: 30px;
+    padding: 20px 0;
+  }
+
+  .card {
+    background: white;
+    width: 100%;            /* Stretch nicely inside container */
+    max-width: 700px;       /* Keep cards from getting too wide */
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    box-sizing: border-box; /* Ensures padding doesn't break width */
+  }
+
+  .card h2 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    color: #0066cc;
+  }
+
+  .card p {
+    margin-bottom: 25px;
+  }
+
+  /* 6. View Project Buttons */
+  .btn-project {
+    display: inline-block;
+    background-color: #0077cc;
+    color: white;
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+
+  .btn-project:hover {
+    background-color: #004c99;
+    transform: translateY(-2px); 
+  }
+
+  /* 7. Footer Styles */
+  footer {
+    text-align: center;
+    padding: 30px;
+    margin-top: 60px;
+    background-color: #222;
+    color: white;
+  }
+
+  footer a {
+    color: #66b3ff;
+    text-decoration: none;
+  }
+  
+  footer a:hover {
+    text-decoration: underline;
+  }
+</style>
+</head>
+
+<body>
+
+  <!-- Navigation with Home Button -->
+  <nav>
+    <a href="index.html" class="btn-home">Home</a>
+  </nav>
+
+  <!-- Lighter Baby Blue Header -->
+  <header>
+    <h1>SQL Portfolio Projects</h1>
+    <p>Querying • Joins • Data Cleaning • Analytical Reporting</p>
+  </header>
+
+  <!-- Container keeps everything centered -->
+  <div class="container">
+    
+    <section class="intro">
+      <p>
+        Collection of SQL projects covering complex querying, joins,
+        aggregations, data cleaning, and analytical reporting.
+      </p>
+    </section>
+
+    <section class="projects">
+
+      <!-- Card 1: Famous Paintings -->
+      <div class="card">
+        <h2>🎨 Famous Paintings (SQL)</h2>
+        <p>
+          Exploratory data analysis using complex SQL queries to uncover insights 
+          about famous artworks, artists, museums, and sizing patterns.
+        </p>
+        <a href="famous_paintings.html" target="_blank" class="btn-project">
+          View Project
+        </a>
+      </div>
+
+      <!-- Card 2: Meta Stock Price -->
+      <div class="card">
+        <h2>📈 Meta Stock Price SQL Analysis</h2>
+        <p>
+          Financial data analysis utilizing SQL window functions, moving averages, 
+          and trend evaluations over historical stock performance.
+        </p>
+        <a href="meta_stock.html" target="_blank" class="btn-project">
+          View Project
+        </a>
+      </div>
+
+      <!-- Card 3: COVID Portfolio (Example) -->
+      <div class="card">
+        <h2>🦠 COVID-19 Data Exploration</h2>
+        <p>
+          Global epidemiological data exploration using SQL to calculate 
+          infection rates, death percentages, and vaccination progress by country.
+        </p>
+        <a href="covid_analysis.html" target="_blank" class="btn-project">
+          View Project
+        </a>
+      </div>
+
+    </section>
+  </div>
+
+  <footer>
+    <p>
+      © 2026 Michéle Adriaans | <a href="index.html">Return to Portfolio</a>
+    </p>
+  </footer>
+
+</body>
+</html>
