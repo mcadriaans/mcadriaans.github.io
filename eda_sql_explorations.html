@@ -16,9 +16,9 @@
     line-height: 1.6;
   }
 
-  /* 2. Container */
+  /* 2. Container (Widened to fit 3 cards in a row) */
   .container {
-    max-width: 900px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 40px; 
   }
@@ -45,9 +45,9 @@
     background-color: #0077cc;
   }
 
-  /* 4. Lighter Baby Blue Header */
+  /* 4. Deep Blue Header (#002D62) */
   header {
-    background: linear-gradient(135deg, #4da6ff, #1a8cff); /* Smooth light baby blue gradient */
+    background-color: #002D62;
     color: white;
     text-align: center;
     padding: 60px 20px;
@@ -61,7 +61,7 @@
   header p {
     font-size: 1.3rem;
     margin: 0;
-    color: #f0f7ff;
+    color: #e6f0ff;
   }
 
   .intro {
@@ -72,39 +72,52 @@
     color: #444;
   }
 
-  /* 5. Project Cards in ONE Column */
+  /* 5. Project Cards Side-by-Side */
   .projects {
     display: flex;
-    flex-direction: column; /* Stack cards vertically */
-    align-items: center;    /* Center the cards */
+    flex-wrap: wrap;       /* Allows cards to wrap nicely on smaller screens */
+    justify-content: center;
     gap: 30px;
     padding: 20px 0;
   }
 
   .card {
     background: white;
-    width: 100%;            /* Stretch nicely inside container */
-    max-width: 700px;       /* Keep cards from getting too wide */
-    padding: 30px;
+    width: 350px;           /* Fixed size so all cards match */
+    padding: 25px;
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    box-sizing: border-box; /* Ensures padding doesn't break width */
+    box-sizing: border-box; 
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* 6. Card Images (Appears above the title, perfectly sized) */
+  .card-img {
+    width: 100%;
+    height: 180px;          /* Uniform image height */
+    object-fit: cover;      /* Crops nicely without stretching */
+    border-radius: 8px;
+    margin-bottom: 20px;
   }
 
   .card h2 {
     margin-top: 0;
-    font-size: 1.5rem;
-    color: #0066cc;
+    font-size: 1.4rem;
+    color: #002D62;
   }
 
   .card p {
+    flex-grow: 1;           /* Pushes button to the bottom evenly */
     margin-bottom: 25px;
+    font-size: 0.95rem;
   }
 
-  /* 6. View Project Buttons */
+  /* 7. View Project Buttons */
   .btn-project {
-    display: inline-block;
-    background-color: #0077cc;
+    display: block;
+    text-align: center;
+    background-color: #002D62;
     color: white;
     text-decoration: none;
     padding: 12px 25px;
@@ -118,7 +131,7 @@
     transform: translateY(-2px); 
   }
 
-  /* 7. Footer Styles */
+  /* 8. Footer Styles */
   footer {
     text-align: center;
     padding: 30px;
@@ -145,13 +158,13 @@
     <a href="index.html" class="btn-home">Home</a>
   </nav>
 
-  <!-- Lighter Baby Blue Header -->
+  <!-- Deep Blue Header (#002D62) -->
   <header>
     <h1>SQL Portfolio Projects</h1>
     <p>Querying • Joins • Data Cleaning • Analytical Reporting</p>
   </header>
 
-  <!-- Container keeps everything centered -->
+  <!-- Container -->
   <div class="container">
     
     <section class="intro">
@@ -165,6 +178,7 @@
 
       <!-- Card 1: Famous Paintings -->
       <div class="card">
+        <img src="assets/eda_paintings.png" alt="Famous Paintings SQL" class="card-img">
         <h2>🎨 Famous Paintings (SQL)</h2>
         <p>
           Exploratory data analysis using complex SQL queries to uncover insights 
@@ -177,6 +191,7 @@
 
       <!-- Card 2: Meta Stock Price -->
       <div class="card">
+        <img src="assets/eda_metastock.png" alt="Metastock SQL" class="card-img">
         <h2>📈 Meta Stock Price SQL Analysis</h2>
         <p>
           Financial data analysis utilizing SQL window functions, moving averages, 
@@ -187,8 +202,9 @@
         </a>
       </div>
 
-      <!-- Card 3: COVID Portfolio (Example) -->
+      <!-- Card 3: COVID-19 Data Exploration -->
       <div class="card">
+        <img src="assets/eda_covid.png" alt="Covid EDA SQL" class="card-img">
         <h2>🦠 COVID-19 Data Exploration</h2>
         <p>
           Global epidemiological data exploration using SQL to calculate 
