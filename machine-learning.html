@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Machine Learning Case Studies | Michéle Adriaans</title>
+
+<style>
+  /* 1. Global Styles & Bigger Font */
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background-color: #f8f9fa;
+    color: #333;
+    font-size: 18px; 
+    line-height: 1.6;
+  }
+
+  /* 2. Container */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px; 
+  }
+
+  /* 3. Navigation & Home Button */
+  nav {
+    padding: 20px 40px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+
+  .btn-home {
+    display: inline-block;
+    background-color: #333;
+    color: white;
+    text-decoration: none;
+    padding: 10px 25px;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+
+  .btn-home:hover {
+    background-color: #123524;
+  }
+
+  /* 4. Custom Green Header (#123524) */
+  header {
+    background-color: #123524; 
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+  }
+
+  header h1 {
+    margin: 0 0 10px 0;
+    font-size: 2.8rem; 
+  }
+
+  header p {
+    font-size: 1.3rem;
+    margin: 0;
+    color: #d1e7dd;
+  }
+
+  .intro {
+    max-width: 900px;
+    margin: 50px auto;
+    text-align: center;
+    font-size: 1.25rem; 
+    color: #444;
+  }
+
+  /* 5. Two Cards Side-by-Side */
+  .projects {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    padding: 20px 0;
+  }
+
+  .card {
+    background: white;
+    width: 500px; /* Wider to accommodate two cards nicely in a row */
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column; 
+    box-sizing: border-box;
+  }
+
+  /* 6. Card Images */
+  .card-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+
+  .card h2 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    color: #123524;
+  }
+
+  .card p {
+    flex-grow: 1; 
+    margin-bottom: 25px;
+  }
+
+  /* 7. View Project Buttons (Matching Green Theme) */
+  .btn-project {
+    display: block;
+    text-align: center;
+    background-color: #123524;
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+
+  .btn-project:hover {
+    background-color: #1c5237;
+    transform: translateY(-2px); 
+  }
+
+  /* 8. Footer Styles */
+  footer {
+    text-align: center;
+    padding: 30px;
+    margin-top: 60px;
+    background-color: #222;
+    color: white;
+  }
+
+  footer a {
+    color: #8fa89b;
+    text-decoration: none;
+  }
+  
+  footer a:hover {
+    text-decoration: underline;
+  }
+</style>
+</head>
+
+<body>
+
+  <!-- Navigation with Home Button -->
+  <nav>
+    <a href="index.html" class="btn-home">Home</a>
+  </nav>
+
+  <!-- Green Header (#123524) -->
+  <header>
+    <h1>Machine Learning Case Studies</h1>
+    <p>Predictive Modeling • Regression • Classification • Model Evaluation</p>
+  </header>
+
+  <!-- Container -->
+  <div class="container">
+    
+    <section class="intro">
+      <p>
+        Detailed machine learning case studies focusing on feature engineering, 
+        model selection, hyperparameter tuning, and predictive performance.
+      </p>
+    </section>
+
+    <section class="projects">
+
+      <!-- Card 1: Diamond Prediction -->
+      <div class="card">
+        <img src="assets/ml_diamond.png" alt="Diamond Price Prediction" class="card-img">
+        <h2>💎 Diamond Price Prediction</h2>
+        <p>
+          Supervised machine learning regression model built to predict diamond prices 
+          based on carat, cut, color, clarity, and physical dimensions.
+        </p>
+        <a href="ml_diamond_prediction.html" target="_blank" class="btn-project">
+          View Case Study
+        </a>
+      </div>
+
+      <!-- Card 2: Credit Card Fraud Detection -->
+      <div class="card">
+        <img src="assets/ml_fraud.png" alt="Credit Card Fraud Detection" class="card-img">
+        <h2>💳 Credit Card Fraud Detection</h2>
+        <p>
+          Classification model designed to identify fraudulent transactions from 
+          highly imbalanced financial datasets using advanced sampling and evaluation metrics.
+        </p>
+        <a href="ml_credit_fraud.html" target="_blank" class="btn-project">
+          View Case Study
+        </a>
+      </div>
+
+    </section>
+  </div>
+
+  <footer>
+    <p>
+      © 2026 Michéle Adriaans | <a href="index.html">Return to Portfolio</a>
+    </p>
+  </footer>
+
+</body>
+</html>
+  </footer>
+
+</body>
+</html>
