@@ -1,38 +1,56 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Diamond Price Prediction | Case Study</title>
+  <title>Credit Card Fraud Detection | Case Study</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI&display=swap" rel="stylesheet">
-
   <style>
+    :root {
+      --forest-green: #00573F;
+      --light-green: #e5f1ec;
+      --text-color: #333;
+      --card-background: #f8faf9;
+      --border-color: #d9e3de;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f2f2f2;
-      color: #333;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background-color: var(--forest-green);
+      color: var(--text-color);
+      line-height: 1.6;
     }
 
     header {
-      background-color: #1a894a; /* Professional Green */
+      background-color: var(--forest-green);
       color: white;
       padding: 20px 30px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
     }
 
     header h1 {
       margin: 0;
-      font-size: 1.8em;
+      font-size: 1.7em;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
     }
 
     nav a {
       color: white;
-      margin-left: 20px;
       text-decoration: none;
       font-weight: 500;
     }
@@ -44,28 +62,74 @@
     .container {
       max-width: 1000px;
       margin: 30px auto;
-      padding: 20px 30px;
+      padding: 25px 30px;
       background-color: #fff;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      border-radius: 8px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.18);
+      border-radius: 10px;
     }
 
     .header-image {
+      display: block;
       width: 100%;
       height: auto;
-      border-radius: 6px;
-      margin-bottom: 30px;
       max-height: 400px;
       object-fit: cover;
+      border-radius: 7px;
+      margin-bottom: 30px;
     }
 
     section {
       margin-bottom: 40px;
+      scroll-margin-top: 20px;
     }
 
     h2 {
-      color: #1a894a; /* Matched section headers to the green theme */
+      color: var(--forest-green);
       margin-bottom: 15px;
+      font-size: 1.5em;
+    }
+
+    h3 {
+      color: var(--forest-green);
+      margin-bottom: 8px;
+    }
+
+    .intro {
+      font-size: 1.05em;
+    }
+
+    .highlight {
+      background-color: var(--light-green);
+      border-left: 5px solid var(--forest-green);
+      padding: 18px 20px;
+      border-radius: 5px;
+      margin: 25px 0;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 15px;
+      margin: 25px 0;
+    }
+
+    .stat-card {
+      background-color: var(--card-background);
+      border: 1px solid var(--border-color);
+      border-radius: 7px;
+      padding: 18px 12px;
+      text-align: center;
+    }
+
+    .stat-card strong {
+      display: block;
+      font-size: 1.6em;
+      color: var(--forest-green);
+      margin-bottom: 5px;
+    }
+
+    .stat-card span {
+      font-size: 0.9em;
     }
 
     .card-list {
@@ -74,38 +138,74 @@
       gap: 20px;
       list-style: none;
       padding: 0;
+      margin: 20px 0;
     }
 
     .card-list li {
-      background-color: #f9f9f9;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      padding: 15px;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      background-color: var(--card-background);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 22px 18px;
       text-align: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .card-list li:hover {
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0, 87, 63, 0.14);
+    }
+
+    .card-icon {
+      display: block;
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+
+    .card-list h3 {
+      margin: 5px 0 10px;
+      font-size: 1.1em;
+    }
+
+    .card-list p {
+      font-size: 0.93em;
+      margin: 0 0 15px;
     }
 
     .card-list a {
-      color: #1a894a; /* Matched link text to green theme */
-      font-weight: 600;
+      color: var(--forest-green);
+      font-weight: 700;
       text-decoration: none;
-      font-size: 1.1em;
     }
 
     .card-list a:hover {
       text-decoration: underline;
     }
 
+    .github-card {
+      background-color: var(--light-green) !important;
+      border: 2px solid var(--forest-green) !important;
+    }
+
+    .github-link {
+      display: inline-block;
+      background-color: var(--forest-green);
+      color: white !important;
+      padding: 10px 17px;
+      border-radius: 5px;
+      font-size: 0.95em;
+    }
+
+    .github-link:hover {
+      background-color: #003f2e;
+      text-decoration: none !important;
+    }
+
     .back-button {
       display: inline-block;
       margin-top: 10px;
       padding: 10px 16px;
-      background-color: #000;
-      color: #fff;
+      background-color: var(--forest-green);
+      color: white;
       text-decoration: none;
       border-radius: 6px;
       font-weight: 600;
@@ -113,14 +213,42 @@
     }
 
     .back-button:hover {
-      background-color: #333;
+      background-color: #003f2e;
+    }
+
+    .note {
+      font-size: 0.9em;
+      color: #555;
     }
 
     footer {
       text-align: center;
       padding: 20px;
       font-size: 0.9em;
-      color: #666;
+      color: white;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        padding: 18px 20px;
+      }
+
+      header h1 {
+        font-size: 1.4em;
+      }
+
+      nav {
+        gap: 14px;
+      }
+
+      .container {
+        margin: 18px 12px;
+        padding: 20px;
+      }
+
+      .header-image {
+        margin-bottom: 22px;
+      }
     }
   </style>
 </head>
@@ -128,59 +256,206 @@
 <body>
 
   <header>
-    <h1>💎 Diamond Price Prediction</h1>
+    <h1>💳 Credit Card Fraud Detection</h1>
+
     <nav>
-      <a href="#files">Files</a>
+      <a href="#files">Project Files</a>
       <a href="#about">About</a>
       <a href="index.html">Portfolio</a>
     </nav>
   </header>
 
-  <div class="container">
-    <!-- Updated image path here -->
-    <img src="assets/ml_diamond_index.png" alt="Diamond Price Prediction Model" class="header-image">
+  <main class="container">
+
+    <!-- Save the project banner in your assets folder using this filename -->
+    <img
+      src="assets/credit_card_fraud_index.png"
+      alt="Credit Card Fraud Detection machine learning project"
+      class="header-image"
+    >
 
     <section id="intro">
-      <p>
-        Welcome to my Diamond Price Prediction case study. 
-        This project focuses on building a machine learning regression model to estimate the market value of diamonds based on their physical attributes.
+      <p class="intro">
+        Welcome to my Credit Card Fraud Detection case study. This project
+        investigates how machine learning can identify fraudulent credit card
+        transactions in a highly imbalanced dataset, where fraudulent
+        transactions represent only a very small proportion of all activity.
+      </p>
+
+      <div class="highlight">
+        <strong>Project objective:</strong>
+        Develop and evaluate classification models that identify fraudulent
+        transactions while balancing fraud detection (recall) against the
+        reliability of fraud alerts (precision).
+      </div>
+
+      <div class="stats">
+        <div class="stat-card">
+          <strong>99.83%</strong>
+          <span>Legitimate transactions in the cleaned dataset</span>
+        </div>
+
+        <div class="stat-card">
+          <strong>0.17%</strong>
+          <span>Fraudulent transactions in the cleaned dataset</span>
+        </div>
+
+        <div class="stat-card">
+          <strong>98.6%</strong>
+          <span>Final test-set precision</span>
+        </div>
+
+        <div class="stat-card">
+          <strong>72.6%</strong>
+          <span>Final test-set fraud recall</span>
+        </div>
+      </div>
+
+      <p class="note">
+        Final precision and recall are reported on the held-out test set.
+        Results reflect this dataset and evaluation setup; they do not guarantee
+        the same performance in a live fraud detection system.
       </p>
     </section>
 
     <section id="files">
       <h2>📁 Project Files</h2>
+
+      <p>
+        Explore the project documentation, notebook, and source code.
+      </p>
+
       <ul class="card-list">
-        <li><a href="README.html">📄 Project README</a></li>
-        <li><a href="diamond_notebook.html">📓 Jupyter Notebook</a></li>
+
+        <li>
+          <span class="card-icon">📄</span>
+          <h3>Project README</h3>
+          <p>
+            Read about the problem, methodology, model comparisons, evaluation
+            results, and key findings.
+          </p>
+          <a href="README.html">View Project README →</a>
+        </li>
+
+        <li>
+          <span class="card-icon">📓</span>
+          <h3>Jupyter Notebook</h3>
+          <p>
+            Explore the data preparation, model training, validation,
+            threshold selection, and final evaluation.
+          </p>
+          <a href="credit_card_fraud_detection.html">
+            View Notebook → 
+          </a>
+        </li>
+
+        <li class="github-card">
+          <span class="card-icon">💻</span>
+          <h3>GitHub Repository</h3>
+          <p>
+            Access the project's source files and follow the analysis in the
+            repository.
+          </p>
+          <a
+            class="github-link"
+            href="https://github.com/mcadriaans/ml_credit-card-fraud-detection"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View on GitHub ↗
+          </a>
+        </li>
+
       </ul>
     </section>
 
     <section id="about">
       <h2>ℹ️ About the Case Study</h2>
+
       <p>
-        This analysis explores the relationship between a diamond's characteristics (such as carat weight, cut quality, color, and clarity) and its overall price. 
+        Credit card fraud detection is a binary classification problem:
+        each transaction is classified as legitimate or fraudulent.
+        The main challenge is class imbalance. A model can appear highly
+        accurate simply by predicting the majority class, while still missing
+        fraudulent transactions.
       </p>
+
       <p>
-        The project covers the end-to-end machine learning lifecycle:
+        The project follows an end-to-end machine learning workflow:
       </p>
+
       <ul>
-        <li><strong>Data Cleaning & EDA:</strong> Handling missing values, outliers, and uncovering correlations.</li>
-        <li><strong>Feature Engineering:</strong> Encoding categorical variables and scaling numerical data.</li>
-        <li><strong>Model Training:</strong> Evaluating various regression algorithms to find the most accurate predictor.</li>
-        <li><strong>Performance Evaluation:</strong> Using metrics like RMSE and R² to measure model success.</li>
+        <li>
+          <strong>Data Cleaning &amp; Preparation:</strong>
+          Remove duplicate records, prepare the features, and scale numerical
+          data using training data to avoid data leakage.
+        </li>
+
+        <li>
+          <strong>Class Imbalance:</strong>
+          Compare approaches including random oversampling, SMOTE, ADASYN,
+          undersampling, Edited Nearest Neighbours, and class weighting.
+        </li>
+
+        <li>
+          <strong>Model Comparison:</strong>
+          Evaluate classification models using precision, recall, and F1-score
+          rather than relying on accuracy alone.
+        </li>
+
+        <li>
+          <strong>Hyperparameter Tuning:</strong>
+          Use Optuna to tune the XGBoost model.
+        </li>
+
+        <li>
+          <strong>Decision Threshold Selection:</strong>
+          Use the validation precision-recall curve to select a threshold
+          that maximizes F1-score.
+        </li>
+
+        <li>
+          <strong>Final Evaluation:</strong>
+          Evaluate the selected model on the held-out test set, which is kept
+          separate from model selection and threshold tuning.
+        </li>
       </ul>
+    </section>
+
+    <section id="results">
+      <h2>📊 Key Findings</h2>
+
       <p>
-        All raw data, files, and source code are available in the GitHub repository via the links above.
+        XGBoost produced the strongest overall validation results among the
+        evaluated approaches. Threshold selection improved the validation
+        precision-recall balance, but the final test results showed lower
+        recall than validation.
+      </p>
+
+      <p>
+        On the test set, precision was 98.6% and recall was 72.6%, with an
+        F1-score of 0.836. This means that most transactions flagged as fraud
+        were genuinely fraudulent, while the model still missed some actual
+        fraud cases.
+      </p>
+
+      <p>
+        The results demonstrate why fraud detection requires careful evaluation
+        of both false alarms and missed fraud, particularly when the target
+        class is rare.
       </p>
     </section>
 
-    <!-- Links smoothly back to the Machine Learning section -->
-    <a href="machine-learning.html" class="back-button">← Back to Machine Learning</a>
-  </div>
+    <a href="machine-learning.html" class="back-button">
+      ← Back to Machine Learning
+    </a>
+
+  </main>
 
   <footer>
-    &copy; 2026 Michéle Adriaans · Built with HTML & GitHub Pages
+    &copy; 2026 Michéle Adriaans · Built with HTML &amp; GitHub Pages
   </footer>
 
 </body>
 </html>
+```
