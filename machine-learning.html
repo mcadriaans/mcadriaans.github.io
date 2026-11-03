@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Machine learning case studies by Michéle Adriaans, covering regression, classification, feature engineering and model evaluation.">
+  <meta name="theme-color" content="#123524">
+  <title>Machine Learning Case Studies | Michéle Adriaans</title>
+
+  <style>
+    :root {
+      --ink: #202b36;
+      --ink-soft: #536170;
+      --navy: #123524;
+      --navy-light: #1c5237;
+      --accent: #397a57;
+      --accent-dark: #24583c;
+      --accent-soft: #eaf2ed;
+      --surface: #fff;
+      --background: #f4f6f8;
+      --border: #dfe5e1;
+      --shadow: 0 10px 30px rgba(18,53,36,.07);
+      --radius: 14px;
+      --content-width: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--ink);
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    a { color: var(--accent-dark); }
+
+    a:focus-visible {
+      outline: 3px solid #d6ad45;
+      outline-offset: 4px;
+      border-radius: 4px;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -60px;
+      left: 16px;
+      z-index: 2000;
+      padding: 10px 16px;
+      background: #fff;
+      color: var(--navy);
+      border-radius: 6px;
+      font-weight: 700;
+    }
+
+    .skip-link:focus { top: 12px; }
+
+    .container {
+      width: min(var(--content-width), calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    /* Navigation — aligned with the homepage */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(18,53,36,.97);
+      box-shadow: 0 2px 12px rgba(0,0,0,.14);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-inner {
+      width: min(var(--content-width), calc(100% - 48px));
+      min-height: 68px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 750;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #e7eee9;
+      text-decoration: none;
+      font-size: .92rem;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover { color: #b9dfc7; }
+
+    /* Green hero — same structure and scale as the homepage */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 78px 24px 74px;
+      background: linear-gradient(130deg, #123524 0%, #24583c 100%);
+      color: #fff;
+      text-align: center;
+    }
+
+    .hero::after {
+      position: absolute;
+      right: -120px;
+      bottom: -250px;
+      width: 520px;
+      height: 520px;
+      border: 1px solid rgba(185,223,199,.18);
+      border-radius: 50%;
+      content: "";
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 850px;
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: #b9dfc7;
+      font-size: .82rem;
+      font-weight: 750;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(2.2rem,5vw,3.35rem);
+      line-height: 1.15;
+      letter-spacing: -.035em;
+    }
+
+    .hero-summary {
+      max-width: 760px;
+      margin: 18px auto 0;
+      color: #e0ebe4;
+      font-size: clamp(1.05rem,2.2vw,1.2rem);
+    }
+
+    .hero-tags {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 25px;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      padding: 6px 12px;
+      border: 1px solid rgba(255,255,255,.28);
+      border-radius: 6px;
+      color: #f0f6f2;
+      font-size: .88rem;
+      font-weight: 600;
+    }
+
+    main { padding: 12px 0 64px; }
+
+    .section { padding-top: 62px; }
+
+    .section-heading {
+      margin: 0 0 12px;
+      color: var(--navy);
+      font-size: clamp(1.7rem,3vw,2.15rem);
+      line-height: 1.25;
+      text-align: center;
+    }
+
+    .section-intro {
+      max-width: 760px;
+      margin: 0 auto 30px;
+      color: var(--ink-soft);
+      text-align: center;
+    }
+
+    /* Case-study cards — same card language as homepage projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2,minmax(0,1fr));
+      gap: 22px;
+      margin-top: 30px;
+    }
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 255px;
+      padding: 28px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 34px rgba(18,53,36,.11);
+    }
+
+    .project-type {
+      margin: 0 0 9px;
+      color: var(--accent-dark);
+      font-size: .76rem;
+      font-weight: 750;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .project-card h2 {
+      margin: 0 0 10px;
+      color: var(--navy);
+      font-size: 1.3rem;
+      line-height: 1.35;
+    }
+
+    .project-card p:not(.project-type) {
+      flex-grow: 1;
+      margin: 0 0 22px;
+      color: var(--ink-soft);
+      font-size: .98rem;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-self: flex-start;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent-dark);
+      font-weight: 750;
+      text-decoration: none;
+    }
+
+    .project-link:hover {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .project-link span { transition: transform .2s ease; }
+    .project-link:hover span { transform: translateX(3px); }
+
+    .back-section {
+      margin-top: 38px;
+      text-align: center;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent-dark);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .site-footer {
+      padding: 30px 24px;
+      background: var(--navy);
+      color: #e0ebe4;
+      text-align: center;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 22px;
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      color: #b9dfc7;
+      font-weight: 650;
+      text-decoration: none;
+    }
+
+    .footer-links a:hover { text-decoration: underline; }
+
+    .site-footer p {
+      margin: 0;
+      font-size: .9rem;
+    }
+
+    @media (max-width: 760px) {
+      .nav-inner {
+        flex-direction: column;
+        justify-content: center;
+        gap: 8px;
+        padding: 12px 0;
+      }
+
+      .nav-links {
+        justify-content: center;
+        gap: 10px 18px;
+      }
+
+      .hero { padding: 68px 20px 64px; }
+    }
+
+    @media (max-width: 560px) {
+      body { font-size: 16px; }
+
+      .container,
+      .nav-inner {
+        width: min(100% - 32px,var(--content-width));
+      }
+
+      .nav-links { gap: 8px 14px; }
+      .nav-links a { font-size: .85rem; }
+      .section { padding-top: 50px; }
+
+      .projects-grid { grid-template-columns: 1fr; }
+
+      .project-card {
+        min-height: 0;
+        padding: 24px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a class="brand" href="index.html">Michéle Adriaans</a>
+
+      <ul class="nav-links">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#skills">Skills</a></li>
+        <li><a href="index.html#projects">Projects</a></li>
+        <li>
+          <a href="https://github.com/mcadriaans"
+             target="_blank" rel="noopener noreferrer">GitHub</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/m-cyntia-a-709315205/"
+             target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-content">
+      <p class="eyebrow">Predictive modelling · Applied machine learning</p>
+      <h1>Machine Learning Case Studies</h1>
+      <p class="hero-summary">
+        Practical modelling projects exploring how data can be prepared,
+        analysed and used to make predictions — from regression to
+        classification and model evaluation.
+      </p>
+      <div class="hero-tags" aria-label="Topics covered">
+        <span class="hero-tag">Regression</span>
+        <span class="hero-tag">Classification</span>
+        <span class="hero-tag">Feature Engineering</span>
+        <span class="hero-tag">Model Evaluation</span>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <div class="container">
+      <section class="section" aria-labelledby="case-studies-heading">
+        <h2 id="case-studies-heading" class="section-heading">Selected Case Studies</h2>
+        <p class="section-intro">
+          These case studies demonstrate practical machine learning workflows,
+          including data preparation, feature engineering, model selection,
+          evaluation and the interpretation of predictive results.
+        </p>
+
+        <div class="projects-grid">
+          <article class="project-card">
+            <p class="project-type">Supervised learning · Regression</p>
+            <h2>💎 Diamond Price Prediction</h2>
+            <p>
+              A regression case study investigating how diamond characteristics
+              such as carat, cut, colour, clarity and physical dimensions relate
+              to price. The workflow explores feature preparation, model
+              selection and evaluation of predictions.
+            </p>
+            <a href="ml_diamond_price_prediction.html" class="project-link">
+              View diamond price case study <span aria-hidden="true">→</span>
+            </a>
+          </article>
+
+          <article class="project-card">
+            <p class="project-type">Supervised learning · Classification</p>
+            <h2>💳 Credit Card Fraud Detection</h2>
+            <p>
+              A classification case study focused on identifying potentially
+              fraudulent transactions in a highly imbalanced financial dataset.
+              It explores sampling strategies and evaluation metrics suited
+              to detecting rare events.
+            </p>
+            <a href="ml_fraud_detection.html" class="project-link">
+              View fraud detection case study <span aria-hidden="true">→</span>
+            </a>
+          </article>
+        </div>
+
+        <div class="back-section">
+          <a href="index.html#projects" class="back-link">
+            <span aria-hidden="true">←</span> Back to all projects
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-links">
+      <a href="https://github.com/mcadriaans"
+         target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://www.linkedin.com/in/m-cyntia-a-709315205/"
+         target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="index.html">Portfolio Home</a>
+    </div>
+    <p>© 2026 Michéle Adriaans · Portfolio</p>
+  </footer>
+</body>
+</html>
