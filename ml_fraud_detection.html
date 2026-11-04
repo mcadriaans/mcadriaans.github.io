@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Credit Card Fraud Detection case study by Michéle Adriaans, exploring imbalanced classification, resampling, model tuning and evaluation.">
+  <title>Credit Card Fraud Detection | Michéle Adriaans</title>
+
+  <style>
+    :root {
+      --green: #087451;
+      --green-dark: #064f3a;
+      --green-soft: #e8f5ef;
+      --ink: #202923;
+      --muted: #647168;
+      --surface: #ffffff;
+      --page: #f5f8f6;
+      --line: #e1e9e3;
+      --nav: #17231c;
+      --shadow: 0 12px 34px rgba(25, 54, 36, 0.08);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--page);
+      color: var(--ink);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    a { color: inherit; }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 10px;
+      z-index: 1000;
+      padding: 10px 14px;
+      border-radius: 8px;
+      background: #fff;
+      color: var(--ink);
+    }
+    .skip-link:focus { left: 12px; }
+
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--nav);
+      color: #fff;
+      box-shadow: 0 3px 14px rgba(0,0,0,.16);
+    }
+
+    .nav-inner {
+      max-width: 1180px;
+      min-height: 68px;
+      margin: 0 auto;
+      padding: 0 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: .2px;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      color: #e8f0ea;
+      text-decoration: none;
+      font-size: .94rem;
+      font-weight: 600;
+      transition: color .2s ease;
+    }
+    .nav-links a:hover,
+    .nav-links a:focus-visible { color: #8ee0c2; }
+
+    .hero {
+      color: #fff;
+      text-align: center;
+      padding: 76px 24px 70px;
+      background:
+        radial-gradient(circle at 15% 15%, rgba(255,255,255,.13), transparent 28%),
+        linear-gradient(135deg, #064f3a 0%, #087451 55%, #15966b 100%);
+    }
+
+    .hero-inner { max-width: 900px; margin: 0 auto; }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 6px 13px;
+      border: 1px solid rgba(255,255,255,.35);
+      border-radius: 999px;
+      color: #e8fff5;
+      font-size: .82rem;
+      font-weight: 700;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(2.1rem, 5vw, 3.35rem);
+      line-height: 1.15;
+      letter-spacing: -.035em;
+    }
+
+    .hero p {
+      max-width: 760px;
+      margin: 18px auto 0;
+      color: #e2f6ed;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+    }
+
+    .tech-tags {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+
+    .tech-tags span {
+      padding: 7px 13px;
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 999px;
+      background: rgba(255,255,255,.1);
+      color: #fff;
+      font-size: .9rem;
+      font-weight: 600;
+    }
+
+    .page-wrap {
+      width: min(1120px, calc(100% - 40px));
+      margin: 42px auto 70px;
+    }
+
+    .intro-panel {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      align-items: center;
+      padding: 28px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .intro-copy h2,
+    .section-heading h2 {
+      margin: 0 0 12px;
+      color: var(--green-dark);
+      font-size: clamp(1.45rem, 3vw, 1.9rem);
+      line-height: 1.25;
+    }
+
+    .intro-copy p { margin: 0; color: #46534a; }
+
+    .header-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 440px;
+      object-fit: contain;
+      object-position: center;
+      border-radius: 13px;
+      background: #fff;
+    }
+
+    section.content-section { margin-top: 54px; }
+
+    .section-heading {
+      max-width: 800px;
+      margin-bottom: 22px;
+    }
+
+    .section-heading p { margin: 0; color: var(--muted); }
+
+    .file-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .file-card,
+    .workflow-card,
+    .result-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .file-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 220px;
+      padding: 24px;
+      border-top: 4px solid var(--green);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .file-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 36px rgba(25, 54, 36, .13);
+    }
+
+    .file-icon {
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      margin-bottom: 16px;
+      border-radius: 12px;
+      background: var(--green-soft);
+      color: var(--green-dark);
+      font-size: 1.35rem;
+    }
+
+    .file-card h3 { margin: 0 0 8px; font-size: 1.12rem; }
+    .file-card p {
+      flex-grow: 1;
+      margin: 0 0 20px;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      align-self: flex-start;
+      color: var(--green-dark);
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .card-link:hover { text-decoration: underline; }
+
+    .workflow-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .workflow-card {
+      display: flex;
+      gap: 16px;
+      padding: 22px;
+    }
+
+    .step-number {
+      flex: 0 0 38px;
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--green-soft);
+      color: var(--green-dark);
+      font-weight: 800;
+    }
+
+    .workflow-card h3 { margin: 0 0 6px; font-size: 1.05rem; }
+    .workflow-card p { margin: 0; color: var(--muted); font-size: .95rem; }
+
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin: 22px 0;
+    }
+
+    .result-card { padding: 22px; text-align: center; }
+    .result-card strong {
+      display: block;
+      color: var(--green-dark);
+      font-size: clamp(1.65rem, 3vw, 2.2rem);
+      line-height: 1.2;
+    }
+    .result-card span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    .results-note {
+      padding: 24px 26px;
+      border-left: 5px solid var(--green);
+      border-radius: 0 14px 14px 0;
+      background: var(--green-soft);
+      color: #405347;
+    }
+    .results-note p { margin: 0 0 10px; }
+    .results-note p:last-child { margin-bottom: 0; }
+    .results-note strong { color: var(--green-dark); }
+
+    .back-row {
+      display: flex;
+      justify-content: center;
+      margin-top: 42px;
+    }
+
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 12px 20px;
+      border-radius: 9px;
+      background: var(--nav);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      transition: background .2s ease, transform .2s ease;
+    }
+    .back-button:hover {
+      background: var(--green-dark);
+      transform: translateY(-2px);
+    }
+
+    footer {
+      padding: 28px 20px;
+      background: var(--nav);
+      color: #d9e4dc;
+      text-align: center;
+      font-size: .92rem;
+    }
+    footer a { color: #8ee0c2; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    a:focus-visible { outline: 3px solid #8ee0c2; outline-offset: 3px; }
+
+    @media (max-width: 760px) {
+      .header-image { max-height: 360px; }
+      .nav-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: center;
+        padding: 15px 20px;
+        gap: 10px;
+      }
+      .nav-links { gap: 15px; }
+      .intro-panel, .file-grid, .workflow-grid, .results-grid { grid-template-columns: 1fr; }
+      .page-wrap { width: min(100% - 28px, 620px); margin-top: 26px; }
+      .hero { padding: 58px 18px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a class="brand" href="index.html">Michéle Adriaans</a>
+      <div class="nav-links">
+        <a href="index.html">Portfolio Home</a>
+        <a href="#files">Project Files</a>
+        <a href="#about">About the Project</a>
+        <a href="#results">Key Findings</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <span class="eyebrow">Machine Learning · Classification Case Study</span>
+      <h1>Credit Card Fraud Detection</h1>
+      <p>
+        Investigating machine learning approaches for identifying fraudulent
+        transactions in a highly imbalanced dataset, where fraud represents only
+        a very small proportion of transaction activity.
+      </p>
+      <div class="tech-tags" aria-label="Technologies and methods">
+        <span>Python</span>
+        <span>Pandas</span>
+        <span>Scikit-learn</span>
+        <span>XGBoost</span>
+        <span>SMOTE &amp; Resampling</span>
+        <span>Optuna</span>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="page-wrap">
+    <section class="intro-panel" aria-labelledby="intro-title">
+      <div class="intro-copy">
+        <h2 id="intro-title">Project Overview</h2>
+        <p>
+          This case study explores how machine learning can distinguish legitimate
+          credit card transactions from fraudulent ones. The central challenge is
+          severe class imbalance: a model can achieve high overall accuracy by
+          predicting the majority class while failing to identify fraud. The project
+          therefore focuses on data preparation, imbalance-handling strategies,
+          model comparison and threshold selection, with particular attention to
+          precision, recall and the trade-off between false alarms and missed fraud.
+        </p>
+      </div>
+      <img
+        src="assets/ml_cc_fraud_detection_index.png"
+        alt="Credit Card Fraud Detection project banner"
+        class="header-image"
+        loading="lazy"
+      >
+    </section>
+
+    <section id="files" class="content-section" aria-labelledby="files-title">
+      <div class="section-heading">
+        <h2 id="files-title">Explore the Project</h2>
+        <p>Access the project documentation, analytical notebook and source code.</p>
+      </div>
+
+      <div class="file-grid">
+        <article class="file-card">
+          <div class="file-icon" aria-hidden="true">📄</div>
+          <h3>Project README</h3>
+          <p>Review the project background, objectives, methodology and key information.</p>
+          <a class="card-link" href="https://mcadriaans.github.io/ml_credit-card-fraud-detection/README.html" target="_blank" rel="noopener noreferrer">
+            Read the README <span aria-hidden="true">↗</span>
+          </a>
+        </article>
+
+        <article class="file-card">
+          <div class="file-icon" aria-hidden="true">📓</div>
+          <h3>Jupyter Notebook</h3>
+          <p>Explore the data preparation, imbalance strategies, model experiments and evaluation.</p>
+          <a class="card-link" href="https://mcadriaans.github.io/ml_credit-card-fraud-detection/Credit_Card_Fraud_Detection.html" target="_blank" rel="noopener noreferrer">
+            View the notebook <span aria-hidden="true">↗</span>
+          </a>
+        </article>
+
+        <article class="file-card">
+          <div class="file-icon" aria-hidden="true">⌘</div>
+          <h3>GitHub Repository</h3>
+          <p>Inspect the project source files and implementation in the repository.</p>
+          <a class="card-link" href="https://github.com/mcadriaans/ml_credit-card-fraud-detection" target="_blank" rel="noopener noreferrer">
+            Open GitHub repository <span aria-hidden="true">↗</span>
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <section id="about" class="content-section" aria-labelledby="about-title">
+      <div class="section-heading">
+        <h2 id="about-title">Analytical Workflow</h2>
+        <p>
+          The project follows a structured classification workflow, with safeguards
+          to keep model selection separate from final test evaluation.
+        </p>
+      </div>
+
+      <div class="workflow-grid">
+        <article class="workflow-card">
+          <div class="step-number">01</div>
+          <div>
+            <h3>Data Cleaning &amp; Preparation</h3>
+            <p>Remove duplicate records, prepare model features and scale numerical data using training data to help prevent data leakage.</p>
+          </div>
+        </article>
+
+        <article class="workflow-card">
+          <div class="step-number">02</div>
+          <div>
+            <h3>Class Imbalance Strategies</h3>
+            <p>Compare random oversampling, SMOTE, ADASYN, undersampling, Edited Nearest Neighbours and class weighting.</p>
+          </div>
+        </article>
+
+        <article class="workflow-card">
+          <div class="step-number">03</div>
+          <div>
+            <h3>Model Comparison &amp; Tuning</h3>
+            <p>Compare classification approaches using precision, recall and F1-score, then tune the XGBoost model with Optuna.</p>
+          </div>
+        </article>
+
+        <article class="workflow-card">
+          <div class="step-number">04</div>
+          <div>
+            <h3>Threshold Selection &amp; Final Evaluation</h3>
+            <p>Select a decision threshold using the validation precision-recall curve, then evaluate the selected model on the held-out test set.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="results" class="content-section" aria-labelledby="results-title">
+      <div class="section-heading">
+        <h2 id="results-title">Key Findings</h2>
+        <p>
+          XGBoost produced the strongest overall validation results among the
+          approaches evaluated. The final test results show why performance must
+          be assessed beyond accuracy.
+        </p>
+      </div>
+
+      <div class="results-grid" aria-label="Final test set performance">
+        <article class="result-card">
+          <strong>98.6%</strong>
+          <span>Test precision</span>
+        </article>
+        <article class="result-card">
+          <strong>72.6%</strong>
+          <span>Test recall</span>
+        </article>
+        <article class="result-card">
+          <strong>0.836</strong>
+          <span>Test F1-score</span>
+        </article>
+      </div>
+
+      <div class="results-note">
+        <p>
+          On the held-out test set, the selected model achieved <strong>98.6%
+          precision</strong> and <strong>72.6% recall</strong>, with an
+          <strong>F1-score of 0.836</strong>.
+        </p>
+        <p>
+          This means that most transactions flagged as fraud were genuinely
+          fraudulent, while the model still missed some actual fraud cases.
+          Threshold selection improved the validation precision-recall balance,
+          but test recall was lower than validation recall.
+        </p>
+        <p>
+          The findings highlight the practical trade-off between false alarms and
+          missed fraud in a highly imbalanced classification problem.
+        </p>
+      </div>
+    </section>
+
+    <div class="back-row">
+      <a href="machine-learning.html" class="back-button">
+        <span aria-hidden="true">←</span> Back to Machine Learning Projects
+      </a>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Michéle Adriaans · Built with HTML &amp; GitHub Pages</p>
+    <p><a href="index.html">Return to Portfolio Home</a></p>
+  </footer>
+</body>
+</html>
